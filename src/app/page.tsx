@@ -1,10 +1,11 @@
 "use client";
 import Posts from "@/components/Posts/Posts";
+import Loader from "@/components/Loader/Loader";
 import usePosts from "@/hooks/usePosts";
 import { useEffect } from "react";
 
 export default function Home() {
-  const { fetchPosts, posts } = usePosts();
+  const { fetchPosts, posts, isLoading } = usePosts();
 
   useEffect(() => {
     fetchPosts();
@@ -12,7 +13,7 @@ export default function Home() {
 
   return (
     <>
-      <section className="p-5 md:p-10 bg-gray-100">
+      <section className="home">
         <h1 className="text-4xl font-bold text-center mt-5 text-gray-800">
           Welcome to Next Revision
         </h1>
@@ -22,9 +23,13 @@ export default function Home() {
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-10 mb-5">
-          {posts.slice(0, 12).map((post, index) => (
-            <Posts post={post} key={post.id} index={index} />
-          ))}
+          {isLoading ? <div className="col-span-full flex justify-center items-center min-h-[60vh]">
+            <Loader />
+          </div> :
+            posts.slice(0, 12).map((post, index) => (
+              <Posts post={post} key={post.id} index={index} />
+            ))
+          }
         </div>
       </section>
     </>

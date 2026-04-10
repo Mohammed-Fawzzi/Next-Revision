@@ -14,10 +14,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="App">
+    <html lang="en">
       <body>
         <Navbar />
-        <main className="main">
+        <main className="main App p-5 md:p-10">
           {children}
         </main>
         <Footer />
