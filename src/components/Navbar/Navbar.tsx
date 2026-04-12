@@ -12,68 +12,66 @@ export default function Navbar() {
 
   return (
     <nav className="w-full h-16 bg-gray-800 text-white flex items-center px-8 relative z-50">
-      {/* desktop menu */}
-      <div className="flex items-center justify-between w-full gap-5">
-        <Link href="/" className="flex items-center gap-2">
-          <div className="flex items-center gap-2">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="0 0 48 48"
-              className="w-8 h-8"
-              fill="none"
-            >
-              <circle cx="24" cy="24" r="22" stroke="white" strokeWidth="3" />
-              <path
-                d="M14 30L24 14L34 30"
-                stroke="white"
-                strokeWidth="3"
-                strokeLinecap="round"
-                strokeLinejoin="round"
-              />
-            </svg>
+      <div className="flex items-center w-full">
 
-            <span className="text-xl font-bold">Next</span>
-          </div>
+        {/* Logo */}
+        <Link href="/" className="flex items-center gap-2">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 48 48"
+            className="w-8 h-8"
+            fill="none"
+          >
+            <circle cx="24" cy="24" r="22" stroke="white" strokeWidth="3" />
+            <path
+              d="M14 30L24 14L34 30"
+              stroke="white"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            />
+          </svg>
+          <span className="text-xl font-bold">Next</span>
         </Link>
 
-        <div>
-          <ul className="hidden md:flex items-center justify-center gap-5">
-            <li>
-              <Link href="/">Home</Link>
-            </li>
-            <li>
-              <Link href="/about">About</Link>
-            </li>
-            <li>
-              <Link href="/contact">Contact</Link>
-            </li>
-            <li>
-              <Link href="/gallery">Gallery</Link>
-            </li>
+        {/* Links - Center */}
+        <div className="hidden md:flex flex-1 justify-center">
+          <ul className="flex items-center gap-6">
+            <li><Link href="/">Home</Link></li>
+            <li><Link href="/about">About</Link></li>
+            <li><Link href="/contact">Contact</Link></li>
+            <li><Link href="/gallery">Gallery</Link></li>
           </ul>
         </div>
 
+        {/* Auth Buttons - Right */}
+        <div className="hidden md:flex items-center gap-3">
+          <Link
+            href="/signin"
+            className="px-4 py-1.5 border border-white rounded-lg hover:bg-white hover:text-gray-800 transition"
+          >
+            Login
+          </Link>
+        </div>
+
         {/* Mobile Menu Toggle */}
-        <div className="flex md:hidden cursor-pointer" onClick={toggleMenu}>
+        <div className="flex md:hidden ml-auto cursor-pointer" onClick={toggleMenu}>
           {isMenuOpen ? <FaX /> : <RiMenu2Line />}
         </div>
       </div>
 
       {/* Mobile Menu */}
       {isMenuOpen && (
-        <div className="absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center justify-center gap-5 py-4 md:hidden">
-          <Link href="/" onClick={toggleMenu}>
-            Home
-          </Link>
-          <Link href="/about" onClick={toggleMenu}>
-            About
-          </Link>
-          <Link href="/contact" onClick={toggleMenu}>
-            Contact
-          </Link>
-          <Link href="/gallery" onClick={toggleMenu}>
-            Gallery
-          </Link>
+        <div className="absolute top-16 left-0 w-full bg-gray-800 text-white flex flex-col items-center gap-5 py-4 md:hidden">
+          <Link href="/" onClick={toggleMenu}>Home</Link>
+          <Link href="/about" onClick={toggleMenu}>About</Link>
+          <Link href="/contact" onClick={toggleMenu}>Contact</Link>
+          <Link href="/gallery" onClick={toggleMenu}>Gallery</Link>
+
+          {/* Auth in mobile */}
+          <div className="flex gap-3 mt-2">
+            <Link href="/signin" onClick={toggleMenu}>Login</Link>
+          </div>
         </div>
       )}
     </nav>
