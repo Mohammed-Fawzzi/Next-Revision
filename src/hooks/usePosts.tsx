@@ -10,7 +10,7 @@ export default function usePosts() {
   const fetchPosts = async () => {
     try {
       setIsLoading(true);
-      const data = await fetch(`https://jsonplaceholder.typicode.com/posts`);
+      const data = await fetch(`https://jsonplaceholder.typicode.com/posts`, { cache: "no-store" });
       if (!data.ok) {
         throw new Error("Failed to fetch posts");
       }

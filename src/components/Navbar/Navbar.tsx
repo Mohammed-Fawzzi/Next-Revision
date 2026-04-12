@@ -52,6 +52,12 @@ export default function Navbar() {
           >
             Login
           </Link>
+          <Link
+            href="/signup"
+            className="px-4 py-1.5 bg-blue-500 rounded-lg hover:bg-blue-600 transition"
+          >
+            Register
+          </Link>
         </div>
 
         {/* Mobile Menu Toggle */}
@@ -71,6 +77,7 @@ export default function Navbar() {
           {/* Auth in mobile */}
           <div className="flex gap-3 mt-2">
             <Link href="/signin" onClick={toggleMenu}>Login</Link>
+            <Link href="/signup" onClick={toggleMenu}>Register</Link>
           </div>
         </div>
       )}

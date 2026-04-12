@@ -6,7 +6,9 @@ export type postsType = {
 };
 
 export type FormData = {
+  name?: string;
   email: string;
   password: string;
-  remember: boolean;
+  confirmPassword?: string;
+  remember?: boolean;
 };
