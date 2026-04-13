@@ -1,5 +1,6 @@
 "use client";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { FaX } from "react-icons/fa6";
 import { RiMenu2Line } from "react-icons/ri";
@@ -9,6 +10,8 @@ export default function Navbar() {
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const PathName = usePathname()
 
   return (
     <nav className="w-full h-16 bg-gray-800 text-white flex items-center px-8 relative z-50">
@@ -37,10 +40,10 @@ export default function Navbar() {
         {/* Links - Center */}
         <div className="hidden md:flex flex-1 justify-center">
           <ul className="flex items-center gap-6">
-            <li><Link href="/">Home</Link></li>
-            <li><Link href="/about">About</Link></li>
-            <li><Link href="/contact">Contact</Link></li>
-            <li><Link href="/gallery">Gallery</Link></li>
+            <li><Link href="/" className={PathName === "/" ? "text-red-500" : ""}>Home</Link></li>
+            <li><Link href="/about" className={PathName === "/about" ? "text-red-500" : ""}>About</Link></li>
+            <li><Link href="/contact" className={PathName === "/contact" ? "text-red-500" : ""}>Contact</Link></li>
+            <li><Link href="/gallery" className={PathName === "/gallery" ? "text-red-500" : ""}>Gallery</Link></li>
           </ul>
         </div>
 
